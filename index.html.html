@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Quiz — Fraudes Digitais | Cazan Transportes</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:   #111111;
+  --black2:  #1A1A1A;
+  --black3:  #222222;
+  --yellow:  #F5B800;
+  --yellow2: #FFCA28;
+  --gray-md: #3A3A3A;
+  --white:   #FFFFFF;
+  --green:   #27AE60;
+  --red:     #C0392B;
+  --mid:     #888888;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  font-family:'Barlow',sans-serif;
+  font-size:16px;
+  color:var(--white);
+  min-height:100vh;
+  line-height:1.55;
+  -webkit-text-size-adjust:100%;
+}
+
+/* ── HEADER ── */
+.site-header{
+  background:var(--black);
+  border-bottom:3px solid var(--yellow);
+  padding:0 16px;
+  display:flex;align-items:center;justify-content:space-between;
+  height:56px;
+  position:sticky;top:0;z-index:100;
+}
+.logo{display:flex;align-items:center;gap:10px;}
+.logo img{height:36px;width:auto;mix-blend-mode:lighten;}
+.logo-badge{
+  background:var(--yellow);color:var(--black);
+  font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:3px 8px;border-radius:4px;white-space:nowrap;
+}
+.header-right{
+  font-size:.75rem;color:var(--white);
+  text-align:right;line-height:1.4;
+  display:none;
+}
+@media(min-width:480px){
+  .site-header{padding:0 24px;height:60px;}
+  .logo img{height:40px;}
+  .header-right{display:block;}
+}
+@media(min-width:768px){
+  .site-header{padding:0 40px;height:64px;}
+}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(135deg,var(--black) 0%,var(--black3) 100%);
+  padding:36px 16px 32px;
+  text-align:center;
+  position:relative;overflow:hidden;
+  border-bottom:4px solid var(--yellow);
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 70% at 80% 50%,rgba(245,184,0,.07) 0%,transparent 60%);
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(245,184,0,.12);border:1px solid rgba(245,184,0,.3);
+  color:var(--yellow);font-size:.7rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;
+  padding:5px 14px;border-radius:4px;margin-bottom:16px;position:relative;
+}
+.hero h1{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:clamp(2.2rem,8vw,4.8rem);
+  line-height:1;margin-bottom:10px;position:relative;
+  text-transform:uppercase;letter-spacing:.02em;
+}
+.hero h1 .yellow{color:var(--yellow);}
+.hero-sub{color:var(--white);font-size:.95rem;position:relative;}
+@media(min-width:480px){
+  .hero{padding:48px 24px 40px;}
+  .hero h1{font-size:clamp(2.8rem,7vw,4.8rem);}
+  .hero-sub{font-size:1.05rem;}
+}
+@media(min-width:768px){
+  .hero{padding:64px 40px 56px;}
+}
+
+/* ── START SCREEN ── */
+#startScreen{max-width:700px;margin:24px auto;padding:0 12px;}
+@media(min-width:480px){#startScreen{margin:32px auto;padding:0 16px;}}
+@media(min-width:768px){#startScreen{margin:48px auto;padding:0 20px;}}
+
+.start-card{
+  background:var(--black2);border:1px solid var(--gray-md);border-top:4px solid var(--yellow);
+  border-radius:8px;overflow:hidden;
+}
+.start-top{padding:24px 20px;border-bottom:1px solid var(--gray-md);}
+.start-top h2{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.5rem;
+  color:var(--yellow);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;
+}
+.start-top p{color:var(--white);font-size:.95rem;line-height:1.6;}
+.start-body{padding:20px;}
+@media(min-width:480px){
+  .start-top{padding:28px 28px;}
+  .start-top h2{font-size:1.7rem;}
+  .start-top p{font-size:1rem;}
+  .start-body{padding:24px 28px;}
+}
+@media(min-width:768px){
+  .start-top{padding:36px 40px;}
+  .start-top h2{font-size:1.8rem;margin-bottom:10px;}
+  .start-body{padding:32px 40px;}
+}
+
+.start-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px;}
+.ss-item{
+  background:var(--black3);border:1px solid var(--gray-md);
+  border-top:3px solid var(--yellow);
+  text-align:center;padding:14px 4px;border-radius:6px;
+}
+.ss-val{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:2rem;color:var(--yellow);line-height:1;
+}
+.ss-lbl{font-size:.72rem;color:var(--white);margin-top:3px;letter-spacing:.05em;text-transform:uppercase;}
+@media(min-width:480px){
+  .start-stats{gap:14px;margin-bottom:24px;}
+  .ss-item{padding:16px 6px;}
+  .ss-val{font-size:2.2rem;}
+  .ss-lbl{font-size:.78rem;}
+}
+@media(min-width:768px){
+  .start-stats{gap:16px;margin-bottom:28px;}
+  .ss-item{padding:18px 8px;}
+  .ss-val{font-size:2.4rem;}
+  .ss-lbl{font-size:.82rem;}
+}
+
+.topics{display:flex;flex-direction:column;gap:6px;margin-bottom:24px;}
+.topic-item{
+  display:flex;align-items:center;gap:8px;
+  padding:9px 12px;background:var(--black3);border-radius:6px;
+  font-size:.9rem;color:var(--white);border-left:3px solid var(--yellow);
+}
+.topic-item::before{content:'›';color:var(--yellow);font-weight:700;font-size:1rem;flex-shrink:0;}
+@media(min-width:480px){
+  .topics{gap:8px;margin-bottom:28px;}
+  .topic-item{padding:10px 14px;font-size:.95rem;}
+}
+@media(min-width:768px){
+  .topic-item{font-size:1rem;}
+}
+
+.btn-start{
+  width:100%;padding:15px;border-radius:6px;
+  background:var(--yellow);color:var(--black);
+  font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:all .2s;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.btn-start:active{transform:scale(.98);}
+@media(min-width:480px){
+  .btn-start{padding:16px;font-size:1.15rem;}
+}
+@media(hover:hover){
+  .btn-start:hover{background:var(--yellow2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,184,0,.3);}
+}
+
+/* ── PROGRESS ── */
+#progressBar{display:none;position:sticky;top:56px;z-index:99;background:var(--black2);border-bottom:1px solid var(--gray-md);}
+@media(min-width:480px){#progressBar{top:60px;}}
+@media(min-width:768px){#progressBar{top:64px;}}
+
+.prog-bar-strip{height:3px;background:var(--gray-md);}
+.prog-bar-fill{height:100%;background:var(--yellow);transition:width .5s;}
+.prog-inner{
+  max-width:860px;margin:0 auto;padding:10px 14px;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;
+}
+.prog-label{
+  font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;
+  color:var(--yellow);letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;
+}
+.prog-right{display:flex;align-items:center;gap:10px;}
+.prog-score{font-size:.85rem;color:var(--white);white-space:nowrap;}
+.prog-score strong{color:var(--yellow);font-size:.9rem;}
+.prog-dots{display:flex;gap:3px;flex-wrap:wrap;max-width:200px;}
+.prog-dot{width:9px;height:9px;border-radius:2px;background:var(--gray-md);transition:all .3s;flex-shrink:0;}
+.prog-dot.ok{background:var(--green);}
+.prog-dot.no{background:var(--red);}
+.prog-dot.cur{background:var(--yellow);transform:scale(1.2);}
+@media(min-width:480px){
+  .prog-inner{padding:12px 18px;gap:14px;}
+  .prog-label{font-size:.9rem;}
+  .prog-dots{max-width:260px;gap:4px;}
+  .prog-dot{width:10px;height:10px;}
+}
+@media(min-width:768px){
+  .prog-inner{padding:14px 24px;gap:20px;}
+  .prog-label{font-size:1rem;}
+  .prog-dots{max-width:320px;}
+}
+
+/* ── QUESTION ── */
+#quizMain{display:none;max-width:860px;margin:16px auto;padding:0 12px 60px;}
+@media(min-width:480px){#quizMain{margin:24px auto;padding:0 16px 70px;}}
+@media(min-width:768px){#quizMain{margin:40px auto;padding:0 20px 80px;}}
+
+.q-card{
+  background:var(--black2);border:1px solid var(--gray-md);
+  border-top:4px solid var(--yellow);border-radius:8px;overflow:hidden;
+}
+.q-top{
+  background:var(--black3);padding:18px 18px 16px;
+  border-bottom:1px solid var(--gray-md);
+}
+.q-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+.q-num{
+  font-family:'Barlow Condensed',sans-serif;font-size:.8rem;font-weight:700;
+  color:var(--yellow);letter-spacing:.14em;text-transform:uppercase;
+}
+.q-cat{
+  font-size:.65rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;
+  background:rgba(245,184,0,.1);color:var(--yellow);
+  border:1px solid rgba(245,184,0,.25);
+  padding:3px 9px;border-radius:4px;white-space:nowrap;
+}
+.q-text{
+  font-family:'Barlow',sans-serif;font-weight:600;
+  font-size:clamp(1rem,3.5vw,1.35rem);
+  color:var(--white);line-height:1.45;
+}
+.q-body{padding:16px 18px;}
+@media(min-width:480px){
+  .q-top{padding:22px 26px 18px;}
+  .q-num{font-size:.82rem;}
+  .q-cat{font-size:.68rem;padding:4px 10px;}
+  .q-text{font-size:clamp(1.05rem,3vw,1.4rem);}
+  .q-body{padding:22px 26px;}
+}
+@media(min-width:768px){
+  .q-top{padding:28px 36px;}
+  .q-meta{margin-bottom:14px;}
+  .q-body{padding:28px 36px;}
+}
+
+.options{display:flex;flex-direction:column;gap:8px;}
+.opt{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:12px 14px;border-radius:6px;
+  border:1.5px solid var(--gray-md);
+  background:var(--black3);
+  cursor:pointer;transition:background .15s,border-color .15s;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.opt:active:not(.disabled){background:rgba(245,184,0,.06);}
+.opt-let{
+  width:30px;height:30px;border-radius:4px;flex-shrink:0;
+  background:var(--gray-md);color:var(--mid);
+  font-family:'Barlow Condensed',sans-serif;font-size:.85rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s,color .15s;
+  margin-top:1px;
+}
+.opt-txt{font-size:.95rem;color:var(--white);line-height:1.45;padding-top:3px;}
+.opt.sel{border-color:var(--yellow);background:rgba(245,184,0,.08);}
+.opt.sel .opt-let{background:var(--yellow);color:var(--black);}
+.opt.correct{border-color:var(--green);background:rgba(39,174,96,.1);}
+.opt.correct .opt-let{background:var(--green);color:var(--white);}
+.opt.wrong{border-color:var(--red);background:rgba(192,57,43,.1);}
+.opt.wrong .opt-let{background:var(--red);color:var(--white);}
+.opt.reveal{border-color:rgba(39,174,96,.25);background:rgba(39,174,96,.04);}
+.opt.reveal .opt-let{background:rgba(39,174,96,.15);color:var(--green);}
+.opt.disabled{cursor:default;}
+@media(min-width:480px){
+  .options{gap:9px;}
+  .opt{padding:13px 16px;gap:13px;}
+  .opt-let{width:31px;height:31px;}
+  .opt-txt{font-size:1rem;}
+}
+@media(min-width:768px){
+  .options{gap:10px;}
+  .opt{padding:14px 18px;gap:14px;}
+  .opt-let{width:32px;height:32px;font-size:.9rem;}
+  .opt-txt{font-size:1.05rem;}
+}
+@media(hover:hover){
+  .opt:hover:not(.disabled){border-color:var(--yellow);background:rgba(245,184,0,.06);}
+}
+
+/* feedback */
+.fb{
+  margin-top:14px;padding:13px 14px;border-radius:6px;
+  display:none;align-items:flex-start;gap:10px;
+}
+.fb.show{display:flex;}
+.fb.fb-ok{background:rgba(39,174,96,.12);border-left:4px solid var(--green);}
+.fb.fb-no{background:rgba(192,57,43,.1);border-left:4px solid var(--red);}
+.fb-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.fb-txt{font-size:.9rem;color:var(--white);line-height:1.55;}
+.fb-txt strong{color:var(--yellow);}
+@media(min-width:480px){
+  .fb{margin-top:16px;padding:14px 16px;gap:11px;}
+  .fb-txt{font-size:.95rem;}
+}
+@media(min-width:768px){
+  .fb{margin-top:20px;padding:16px 18px;gap:12px;}
+  .fb-icon{font-size:1.2rem;}
+  .fb-txt{font-size:1rem;}
+}
+
+/* actions */
+.q-actions{
+  padding:14px 18px 18px;
+  display:flex;justify-content:flex-end;gap:10px;
+  border-top:1px solid var(--gray-md);
+  flex-wrap:wrap;
+}
+.btn-check,.btn-next{
+  padding:11px 20px;border-radius:6px;
+  font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:all .2s;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+  flex:1;min-width:120px;text-align:center;
+}
+.btn-check{background:var(--yellow);color:var(--black);}
+.btn-check:disabled{background:var(--gray-md);color:var(--mid);cursor:not-allowed;}
+.btn-check:active:not(:disabled){transform:scale(.97);}
+.btn-next{
+  background:transparent;color:var(--yellow);
+  border:1.5px solid var(--yellow);
+  display:none;align-items:center;justify-content:center;gap:6px;
+}
+.btn-next:active{background:rgba(245,184,0,.1);}
+.btn-next.show{display:inline-flex;}
+@media(min-width:480px){
+  .q-actions{padding:16px 26px 22px;gap:12px;}
+  .btn-check,.btn-next{padding:12px 24px;font-size:.95rem;flex:0 1 auto;min-width:130px;}
+}
+@media(min-width:768px){
+  .q-actions{padding:18px 36px 28px;}
+  .btn-check,.btn-next{padding:12px 28px;font-size:1rem;}
+}
+@media(hover:hover){
+  .btn-check:hover:not(:disabled){background:var(--yellow2);transform:translateY(-1px);}
+  .btn-next:hover{background:rgba(245,184,0,.1);}
+}
+
+/* ── RESULT ── */
+#resultScreen{display:none;max-width:860px;margin:24px auto;padding:0 12px 60px;}
+@media(min-width:480px){#resultScreen{margin:32px auto;padding:0 16px 70px;}}
+@media(min-width:768px){#resultScreen{margin:40px auto;padding:0 20px 80px;}}
+
+.result-card{
+  background:var(--black2);border:1px solid var(--gray-md);
+  border-top:4px solid var(--yellow);border-radius:8px;
+  padding:36px 20px;text-align:center;
+}
+.result-medal{font-size:4rem;display:block;margin-bottom:14px;animation:pop .6s cubic-bezier(.34,1.56,.64,1);}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.result-score{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:4rem;color:var(--yellow);line-height:1;margin-bottom:4px;
+}
+.result-pct{color:var(--mid);font-size:.9rem;margin-bottom:20px;}
+.result-status-ok{color:var(--green);font-weight:700;}
+.result-status-no{color:var(--red);font-weight:700;}
+.result-msg{
+  font-size:.95rem;color:var(--white);
+  max-width:480px;margin:0 auto 28px;line-height:1.6;
+}
+.result-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;
+  max-width:420px;margin:0 auto 28px;
+}
+.rs-item{
+  background:var(--black3);border:1px solid var(--gray-md);
+  border-radius:6px;padding:16px 6px;text-align:center;
+}
+.ok-item{border-top:3px solid var(--green);}
+.no-item{border-top:3px solid var(--red);}
+.pt-item{border-top:3px solid var(--yellow);}
+.rs-val{
+  font-family:'Barlow Condensed',sans-serif;font-weight:800;
+  font-size:2rem;line-height:1;
+}
+.ok-item .rs-val{color:var(--green);}
+.no-item .rs-val{color:var(--red);}
+.pt-item .rs-val{color:var(--yellow);}
+.rs-lbl{font-size:.72rem;color:var(--white);margin-top:4px;letter-spacing:.06em;text-transform:uppercase;}
+.btn-restart{
+  padding:13px 32px;border-radius:6px;
+  background:var(--yellow);color:var(--black);
+  font-family:'Barlow Condensed',sans-serif;font-size:1rem;font-weight:800;
+  letter-spacing:.06em;text-transform:uppercase;
+  border:none;cursor:pointer;transition:all .2s;margin-bottom:32px;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+}
+.btn-restart:active{transform:scale(.97);}
+@media(min-width:480px){
+  .result-card{padding:44px 28px;}
+  .result-medal{font-size:4.5rem;margin-bottom:16px;}
+  .result-score{font-size:4.5rem;}
+  .result-pct{font-size:.95rem;margin-bottom:24px;}
+  .result-msg{font-size:1rem;margin-bottom:32px;}
+  .result-stats{gap:12px;margin-bottom:32px;}
+  .rs-item{padding:18px 8px;}
+  .rs-val{font-size:2.2rem;}
+  .rs-lbl{font-size:.78rem;}
+  .btn-restart{padding:14px 36px;font-size:1.02rem;margin-bottom:36px;}
+}
+@media(min-width:768px){
+  .result-card{padding:56px 40px;}
+  .result-medal{font-size:5rem;margin-bottom:20px;}
+  .result-score{font-size:5rem;margin-bottom:4px;}
+  .result-pct{font-size:1rem;margin-bottom:28px;}
+  .result-msg{font-size:1.05rem;max-width:520px;margin-bottom:40px;}
+  .result-stats{gap:16px;max-width:480px;margin-bottom:40px;}
+  .rs-item{padding:20px 8px;}
+  .rs-val{font-size:2.4rem;}
+  .rs-lbl{font-size:.82rem;}
+  .btn-restart{padding:14px 40px;font-size:1.05rem;margin-bottom:40px;}
+}
+@media(hover:hover){
+  .btn-restart:hover{background:var(--yellow2);transform:translateY(-2px);}
+}
+
+.review-wrap{text-align:left;margin-top:4px;}
+.review-lbl{
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1rem;
+  color:var(--yellow);text-transform:uppercase;letter-spacing:.06em;
+  margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--gray-md);
+}
+.rev-item{
+  padding:12px 14px;border-radius:6px;margin-bottom:8px;
+  border-left:4px solid;
+}
+.rev-item.ok{background:rgba(39,174,96,.07);border-color:var(--green);}
+.rev-item.no{background:rgba(192,57,43,.07);border-color:var(--red);}
+.rev-cat{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--yellow);margin-bottom:3px;}
+.rev-q{font-size:.9rem;font-weight:600;color:var(--white);margin-bottom:5px;line-height:1.4;}
+.rev-a{font-size:.85rem;color:var(--white);line-height:1.5;}
+.rev-ok{color:var(--green);font-weight:600;}
+.rev-no{color:var(--red);font-weight:600;}
+@media(min-width:480px){
+  .review-lbl{font-size:1.05rem;margin-bottom:14px;padding-bottom:10px;}
+  .rev-item{padding:13px 16px;margin-bottom:9px;}
+  .rev-cat{font-size:.72rem;}
+  .rev-q{font-size:.95rem;}
+  .rev-a{font-size:.88rem;}
+}
+@media(min-width:768px){
+  .review-lbl{font-size:1.1rem;margin-bottom:16px;padding-bottom:10px;}
+  .rev-item{padding:14px 18px;margin-bottom:10px;}
+  .rev-cat{font-size:.78rem;}
+  .rev-q{font-size:1rem;}
+  .rev-a{font-size:.95rem;}
+}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:24px 16px;
+  border-top:1px solid var(--gray-md);
+  font-size:.8rem;color:var(--white);line-height:1.8;
+}
+footer strong{color:var(--white);}
+@media(min-width:480px){
+  footer{padding:28px 20px;font-size:.84rem;}
+}
+@media(min-width:768px){
+  footer{padding:32px 20px;font-size:.88rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="logo">
+    <img src="data:image/png;base64,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" alt="Cazan Transportes">
+    <div class="logo-badge">POP-024</div>
+  </div>
+  <div class="header-right">
+    Atendimento: Seg&ndash;Sex, 8h&ndash;18h<br>
+    <span style="color:var(--yellow)">(11) 2631-5063</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">&#128737;&#65039; Avaliação de Conhecimento</div>
+  <h1>QUIZ <span class="yellow">FRAUDES</span><br>DIGITAIS</h1>
+  <p class="hero-sub">20 questões &middot; Múltipla escolha &middot; POP-024 | Segurança Financeira</p>
+</div>
+
+<!-- START -->
+<div id="startScreen">
+  <div class="start-card">
+    <div class="start-top">
+      <h2>Pronto para ser avaliado?</h2>
+      <p>Este quiz cobre todo o conteúdo do treinamento de prevenção a fraudes digitais e segurança financeira: boletos falsos, phishing, WhatsApp falso, arquivos contaminados, engenharia social, sinais de alerta e procedimentos obrigatórios de conferência.</p>
+    </div>
+    <div class="start-body">
+      <div class="start-stats">
+        <div class="ss-item"><div class="ss-val">20</div><div class="ss-lbl">Questões</div></div>
+        <div class="ss-item"><div class="ss-val">4</div><div class="ss-lbl">Opções</div></div>
+        <div class="ss-item"><div class="ss-val">70%</div><div class="ss-lbl">Para passar</div></div>
+      </div>
+      <div class="topics">
+        <div class="topic-item">Conceitos e definições de fraude digital</div>
+        <div class="topic-item">Boletos falsificados e procedimento de conferência</div>
+        <div class="topic-item">E-mails falsos (Phishing) — como identificar e agir</div>
+        <div class="topic-item">WhatsApp falso e golpes via mensagem</div>
+        <div class="topic-item">Arquivos contaminados e vírus digitais</div>
+        <div class="topic-item">Engenharia social e manipulação psicológica</div>
+        <div class="topic-item">Sinais de alerta e como agir corretamente</div>
+        <div class="topic-item">Procedimentos obrigatórios e não conformidades</div>
+      </div>
+      <button class="btn-start" onclick="startQuiz()">INICIAR QUIZ &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div id="progressBar">
+  <div class="prog-bar-strip"><div class="prog-bar-fill" id="progFill" style="width:0%"></div></div>
+  <div class="prog-inner">
+    <span class="prog-label" id="progLabel">QUESTÃO 1 DE 20</span>
+    <div class="prog-right">
+      <span class="prog-score">Acertos: <strong id="progScore">0</strong></span>
+      <div class="prog-dots" id="progDots"></div>
+    </div>
+  </div>
+</div>
+
+<!-- QUESTION -->
+<div id="quizMain">
+  <div class="q-card">
+    <div class="q-top">
+      <div class="q-meta">
+        <span class="q-num" id="qNum">QUESTÃO 1</span>
+        <span class="q-cat" id="qCat">CATEGORIA</span>
+      </div>
+      <div class="q-text" id="qText"></div>
+    </div>
+    <div class="q-body">
+      <div class="options" id="opts"></div>
+      <div class="fb" id="feedback">
+        <div class="fb-icon" id="fbIcon"></div>
+        <div class="fb-txt" id="fbTxt"></div>
+      </div>
+    </div>
+    <div class="q-actions">
+      <button class="btn-check" id="btnCheck" disabled onclick="check()">CONFIRMAR</button>
+      <button class="btn-next" id="btnNext" onclick="next()">PRÓXIMA &#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div id="resultScreen">
+  <div class="result-card">
+    <span class="result-medal" id="rMedal"></span>
+    <div class="result-score" id="rScore"></div>
+    <div class="result-pct" id="rPct"></div>
+    <div class="result-msg" id="rMsg"></div>
+    <div class="result-stats">
+      <div class="rs-item ok-item"><div class="rs-val" id="rsOk">0</div><div class="rs-lbl">Corretas</div></div>
+      <div class="rs-item no-item"><div class="rs-val" id="rsNo">0</div><div class="rs-lbl">Incorretas</div></div>
+      <div class="rs-item pt-item"><div class="rs-val" id="rsPt">0%</div><div class="rs-lbl">Aproveitamento</div></div>
+    </div>
+    <button class="btn-restart" onclick="restart()">&#128260; REFAZER O QUIZ</button>
+    <div class="review-wrap">
+      <div class="review-lbl">Revisão das Respostas</div>
+      <div id="reviewList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Cazan Transportes Ltda.</strong><br>
+  Av. Recife, 536 - Galpão J3 e J4 - Jardim Santo Afonso, Guarulhos - SP, 07215-030<br>
+  (11) 2631-5063 / 2631-5822 / 2631-5033 &middot; atendimento.sp@cazantransportes.com.br
+</footer>
+
+<script>
+const Q = [
+  {
+    cat: "CONCEITOS",
+    q: "O que é 'phishing', conforme definido no POP-024?",
+    opts: [
+      "Ataque via e-mail ou mensagem com aparência legítima, visando roubar dados, senhas ou induzir pagamentos indevidos",
+      "Falha de segurança em redes Wi-Fi públicas que permite capturar senhas de acesso",
+      "Vírus que criptografa arquivos e exige resgate em criptomoeda para liberar o acesso",
+      "Técnica de invasão física de sistemas de computador por hackers especializados"
+    ],
+    c: 0,
+    exp: "O <strong>phishing</strong> é definido como ataque via e-mail ou mensagem com aparência legítima, visando roubar dados, senhas ou induzir pagamentos indevidos. É uma das formas mais comuns de fraude digital."
+  },
+  {
+    cat: "CONCEITOS",
+    q: "O que é 'engenharia social' segundo o POP-024?",
+    opts: [
+      "Atualização de software para corrigir vulnerabilidades de segurança do sistema",
+      "Técnica de manipulação psicológica que explora confiança, urgência ou medo para obter informações ou ações",
+      "Ferramenta de criptografia usada para proteger e-mails corporativos",
+      "Sistema de monitoramento digital para detectar fraudes em tempo real"
+    ],
+    c: 1,
+    exp: "A <strong>engenharia social</strong> é a técnica de manipulação psicológica que explora confiança, urgência ou medo para obter informações ou ações do alvo. É considerada o golpe mais perigoso pois atua no comportamento humano."
+  },
+  {
+    cat: "CONCEITOS",
+    q: "O que é 'dupla aprovação' conforme o POP-024?",
+    opts: [
+      "Verificação realizada em duas etapas pelo sistema bancário antes de liberar a transação",
+      "Assinatura digital gerada em dois formatos: PDF e XML para validação",
+      "Mecanismo que exige a confirmação de dois responsáveis distintos para autorizar transações acima do limite definido",
+      "Procedimento de backup de todas as transações em dois sistemas diferentes"
+    ],
+    c: 2,
+    exp: "A <strong>dupla aprovação</strong> é o mecanismo que exige a confirmação de dois responsáveis distintos para autorizar transações acima do limite definido. É uma camada essencial de segurança para pagamentos de alto valor."
+  },
+  {
+    cat: "CONCEITOS",
+    q: "O que é um 'boleto falsificado' segundo as definições do POP-024?",
+    opts: [
+      "Boleto com prazo de vencimento inválido ou retroativo gerado por banco digital",
+      "Boleto com valor acima do contratado, enviado por engano pelo fornecedor",
+      "Boleto com código de barras correto, mas com logotipo diferente do banco",
+      "Documento de cobrança adulterado com dados bancários diferentes do credor legítimo, desviando o pagamento"
+    ],
+    c: 3,
+    exp: "Um <strong>boleto falsificado</strong> é um documento de cobrança adulterado com dados bancários diferentes do credor legítimo, desviando o pagamento para a conta do criminoso. O pagamento é efetuado, mas vai para o fraudador."
+  },
+  {
+    cat: "BOLETOS FALSOS",
+    q: "Qual é o procedimento obrigatório ao receber um boleto com dados bancários diferentes do habitual?",
+    opts: [
+      "Confirmar qualquer alteração bancária EXCLUSIVAMENTE via ligação para número previamente cadastrado",
+      "Solicitar que o fornecedor envie um segundo boleto por e-mail para comparar os dados",
+      "Aguardar 48h antes de pagar, para ver se o fornecedor entra em contato novamente",
+      "Pagar imediatamente se o valor e o nome do fornecedor estiverem corretos"
+    ],
+    c: 0,
+    exp: "O POP-024 determina que qualquer alteração bancária deve ser confirmada <strong>EXCLUSIVAMENTE via ligação telefônica para número previamente cadastrado</strong>. Nunca use o telefone informado no próprio e-mail ou boleto suspeito."
+  },
+  {
+    cat: "BOLETOS FALSOS",
+    q: "O que o POP-024 exige para boletos acima do limite financeiro definido?",
+    opts: [
+      "Envio de comprovante ao fornecedor em até 2 horas após o pagamento",
+      "Dupla aprovação obrigatória antes da execução do pagamento",
+      "Aprovação somente da diretoria financeira sem necessidade de segunda confirmação",
+      "Registro em planilha de controle com data e valor antes de pagar"
+    ],
+    c: 1,
+    exp: "O POP-024 determina que <strong>boletos acima do limite definido exigem dupla aprovação obrigatória</strong> antes do pagamento — dois responsáveis distintos precisam autorizar a transação, sem exceção."
+  },
+  {
+    cat: "BOLETOS FALSOS",
+    q: "Quais situações devem gerar alerta imediato ao receber um boleto?",
+    opts: [
+      "Boleto enviado dois dias antes do vencimento com valor idêntico ao contrato",
+      "Boleto com QR Code gerado pelo sistema bancário e código de barras padrão",
+      "Fornecedor envia boleto com CNPJ diferente, por e-mail comprometido ou com QR Code alterado",
+      "Boleto com logotipo do banco levemente diferente, mas com mesmo beneficiário"
+    ],
+    c: 2,
+    exp: "Os principais sinais de alerta em boletos são: <strong>CNPJ ou beneficiário diferente</strong>, e-mail corporativo comprometido enviando boleto, PDF adulterado com QR Code ou código de barras falso, e pedido urgente fora do fluxo habitual."
+  },
+  {
+    cat: "E-MAILS FALSOS",
+    q: "Qual característica indica tentativa de phishing em um e-mail?",
+    opts: [
+      "E-mail com logotipo da empresa em alta resolução e assinatura com cargo detalhado",
+      "Mensagem de texto simples sem formatação HTML e sem nenhum anexo",
+      "E-mail enviado fora do horário comercial com assunto em letras minúsculas",
+      "Domínio semelhante ao real com letras trocadas, urgência extrema e anexos não solicitados"
+    ],
+    c: 3,
+    exp: "As características de phishing incluem: <strong>domínio semelhante ao real</strong> (ex.: .net no lugar de .com.br), <strong>letras trocadas no endereço</strong>, linguagem de urgência extrema e <strong>anexos não solicitados</strong>. Golpes sofisticados podem ter formatação perfeita."
+  },
+  {
+    cat: "E-MAILS FALSOS",
+    q: "O que deve ser feito ao receber um e-mail com link ou anexo suspeito?",
+    opts: [
+      "NÃO abrir — encaminhar para a TI e informar o gestor imediatamente",
+      "Salvar o anexo em pasta temporária e aguardar orientação no próximo dia útil",
+      "Encaminhar para o gestor por e-mail antes de tomar qualquer ação",
+      "Abrir em modo de visualização, sem dar duplo clique, para verificar o conteúdo"
+    ],
+    c: 0,
+    exp: "O POP-024 é claro: diante de e-mail suspeito com link ou anexo, <strong>NÃO abrir — encaminhar para TI e informar o gestor imediatamente</strong>. Nunca abrir anexos de remetentes desconhecidos, nem mesmo em modo de visualização."
+  },
+  {
+    cat: "E-MAILS FALSOS",
+    q: "Como verificar se um e-mail de fornecedor é legítimo antes de clicar em qualquer link?",
+    opts: [
+      "Procurar erros ortográficos — se não houver erros, o e-mail pode ser considerado confiável",
+      "Verificar o endereço completo do remetente (não apenas o nome exibido) e confirmar por outro canal",
+      "Conferir se o logotipo da empresa está presente e bem formatado no corpo do e-mail",
+      "Checar se o e-mail foi recebido no horário comercial e se o valor mencionado está correto"
+    ],
+    c: 1,
+    exp: "O procedimento correto é <strong>verificar o endereço completo do remetente</strong> (o nome exibido pode ser falso) e <strong>confirmar por outro canal</strong> (ligação para número cadastrado). Golpes sofisticados não têm erros ortográficos."
+  },
+  {
+    cat: "WHATSAPP FALSO",
+    q: "Um colaborador recebe mensagem no WhatsApp de número desconhecido dizendo ser o diretor, pedindo PIX urgente. O que deve fazer?",
+    opts: [
+      "Realizar o PIX imediatamente, pois o diretor pode estar sem acesso ao número antigo",
+      "Pedir confirmação por escrito no próprio WhatsApp antes de executar",
+      "NUNCA realizar o pagamento — ligar para o número cadastrado do diretor para confirmar",
+      "Transferir metade do valor como precaução enquanto tenta confirmar"
+    ],
+    c: 2,
+    exp: "O POP-024 determina: <strong>NUNCA realizar pagamento (PIX, TED, boleto) apenas com base em mensagem de WhatsApp</strong>. Confirmar SEMPRE por ligação de voz para número previamente cadastrado antes de qualquer ação."
+  },
+  {
+    cat: "WHATSAPP FALSO",
+    q: "O que NUNCA deve ser compartilhado com terceiros, conforme o POP-024?",
+    opts: [
+      "Nome completo e cargo do colaborador solicitante",
+      "Número de ramal interno e e-mail corporativo",
+      "CNPJ da empresa e endereço da unidade operacional",
+      "Códigos recebidos por SMS ou aplicativo de autenticação (token)"
+    ],
+    c: 3,
+    exp: "O POP-024 é categórico: <strong>jamais compartilhar com terceiros códigos recebidos por SMS ou aplicativo de autenticação</strong>. Esses tokens são senhas temporárias de segurança que identificam o titular e nunca devem ser repassados."
+  },
+  {
+    cat: "WHATSAPP FALSO",
+    q: "Qual afirmação sobre mensagens de WhatsApp é CORRETA conforme o POP-024?",
+    opts: [
+      "Pedido de sigilo sobre uma transação é sinal claro de fraude — comunicar o gestor imediatamente",
+      "PIX de pequeno valor pode ser realizado sem confirmação para agilizar o processo",
+      "Se a foto de perfil do contato for reconhecida, a mensagem pode ser considerada autêntica",
+      "O banco pode solicitar token ou senha por WhatsApp em casos de emergência financeira"
+    ],
+    c: 0,
+    exp: "<strong>Pedido de sigilo é sinal claro de fraude</strong>. O POP-024 afirma que nenhum banco solicita senha por WhatsApp, a diretoria não solicita pagamentos fora do fluxo, e foto de perfil pode ser clonada. Qualquer PIX exige confirmação."
+  },
+  {
+    cat: "ARQUIVOS E VÍRUS",
+    q: "Quais tipos de arquivo são utilizados em ataques digitais conforme o POP-024?",
+    opts: [
+      "Apenas arquivos .exe e .bat, formatos exclusivos de programas executáveis maliciosos",
+      "PDF falso, XML falso, foto contaminada, link malicioso e 'comprovante bancário' com vírus",
+      "Apenas links em SMS — e-mails com anexos são rastreáveis e evitados pelos criminosos",
+      "Somente arquivos .zip e .rar enviados por plataformas de armazenamento desconhecidas"
+    ],
+    c: 1,
+    exp: "O POP-024 lista os tipos usados em ataques: <strong>PDF falso, XML falso, foto contaminada, link malicioso</strong> e <strong>'comprovante bancário' com vírus</strong>. Qualquer arquivo não solicitado, independente do formato, pode ser malicioso."
+  },
+  {
+    cat: "ARQUIVOS E VÍRUS",
+    q: "O que deve ser feito ao receber um arquivo suspeito por e-mail ou WhatsApp?",
+    opts: [
+      "Abrir em dispositivo pessoal para não comprometer o computador da empresa",
+      "Escanear com antivírus gratuito online antes de baixar no computador",
+      "Encaminhar para a TI validar ANTES de abrir — sem clicar em nada",
+      "Abrir apenas a primeira página do documento para verificar a origem do arquivo"
+    ],
+    c: 2,
+    exp: "O POP-024 determina: <strong>encaminhar qualquer arquivo suspeito para o setor de TI ANTES de abrir</strong>. Nunca abrir, encaminhar ou clicar em nada antes da validação da TI — nem mesmo em dispositivo pessoal."
+  },
+  {
+    cat: "ENGENHARIA SOCIAL",
+    q: "Por que a engenharia social é considerada o golpe mais perigoso no POP-024?",
+    opts: [
+      "Porque explora vulnerabilidades técnicas exclusivas do sistema operacional da empresa",
+      "Porque usa vírus indetectáveis pelos antivírus mais modernos do mercado",
+      "Porque exige conhecimento avançado de programação por parte do criminoso",
+      "Porque explora confiança e comportamento humano, sem precisar de recursos tecnológicos"
+    ],
+    c: 3,
+    exp: "A engenharia social é o golpe mais perigoso porque <strong>explora confiança e comportamento humano</strong>, dispensando recursos tecnológicos. O criminoso manipula psicologicamente usando urgência, medo e confiança — sem precisar de vírus ou invasão."
+  },
+  {
+    cat: "ENGENHARIA SOCIAL",
+    q: "O criminoso cita o nome do gestor e detalhes internos da empresa. O que isso indica?",
+    opts: [
+      "Pode ter obtido informações em redes sociais ou de outros colaboradores — não confirma legitimidade",
+      "Confirma que a pessoa realmente conhece a empresa e a solicitação é legítima",
+      "Indica que o e-mail corporativo foi hackeado e todos os dados foram comprometidos",
+      "Significa que é um ex-funcionário e a empresa deve acionar o jurídico imediatamente"
+    ],
+    c: 0,
+    exp: "O fato de citar nomes internos <strong>não confirma legitimidade</strong>. O criminoso pode ter obtido essas informações no LinkedIn, redes sociais ou abordando outros colaboradores. Qualquer solicitação incomum deve ser validada por outro canal, independentemente."
+  },
+  {
+    cat: "SINAIS DE ALERTA",
+    q: "Qual combinação representa os principais sinais de alerta citados no POP-024?",
+    opts: [
+      "Ligação de número privado, uso de linguagem formal e solicitação de reunião presencial",
+      "Urgência excessiva, pedido de sigilo, alteração repentina de conta bancária e pressão emocional",
+      "Pagamento parcelado, desconto acima do habitual e novo contrato de prestação de serviço",
+      "Mensagem enviada fora do horário comercial e remetente com nome desconhecido"
+    ],
+    c: 1,
+    exp: "Os principais sinais de alerta do POP-024: <strong>urgência excessiva, pedido de sigilo, alteração repentina de conta, pressão emocional</strong>, ameaça de bloqueio, erros de português, links estranhos e anexos inesperados. Qualquer um desses sinais exige parar e conferir."
+  },
+  {
+    cat: "SINAIS DE ALERTA",
+    q: "O que deve ser feito imediatamente ao identificar um sinal de alerta durante uma solicitação de pagamento?",
+    opts: [
+      "Reduzir o valor da transação pela metade e aguardar confirmação posterior do solicitante",
+      "Solicitar que o solicitante envie a requisição por e-mail formal para ter registro",
+      "PARAR toda ação, não executar nenhuma transação e acionar o gestor ou TI antes de qualquer passo",
+      "Executar a transação e comunicar a suspeita ao gestor depois, para não atrasar o processo"
+    ],
+    c: 2,
+    exp: "Ao identificar qualquer sinal de alerta, a regra é <strong>PARAR toda ação e acionar o gestor ou TI antes de qualquer passo</strong>. O POP-024 deixa claro: <strong>nenhuma urgência justifica abrir mão da conferência</strong>."
+  },
+  {
+    cat: "NÃO CONFORMIDADES",
+    q: "O que pode ocorrer com um colaborador que não cumprir os procedimentos do POP-024?",
+    opts: [
+      "Transferência imediata para setor sem contato com dados financeiros por 30 dias",
+      "Apenas notificação informal, sem registro em prontuário, para a primeira ocorrência",
+      "Desconto automático no salário equivalente ao prejuízo causado pela fraude",
+      "Orientação e retreinamento imediato, advertência formal e possível restrição de acesso a sistemas financeiros"
+    ],
+    c: 3,
+    exp: "O não cumprimento do POP-024 pode resultar em: <strong>orientação e retreinamento imediato</strong> com registro em prontuário, <strong>advertência formal</strong> conforme política da empresa e <strong>restrição de acesso a sistemas financeiros</strong> até regularização."
+  }
+];
+
+let questions=[], cur=0, sel=null, answered=false, score=0, results=[];
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var i=a.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var tmp=a[i];a[i]=a[j];a[j]=tmp;
+  }
+  return a;
+}
+
+function startQuiz(){
+  questions=shuffle(Q);
+  cur=0; sel=null; answered=false; score=0; results=[];
+  document.getElementById('startScreen').style.display='none';
+  document.getElementById('progressBar').style.display='block';
+  document.getElementById('quizMain').style.display='block';
+  document.getElementById('resultScreen').style.display='none';
+  buildDots();
+  renderQ();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function buildDots(){
+  var w=document.getElementById('progDots');
+  w.innerHTML='';
+  for(var i=0;i<questions.length;i++){
+    var d=document.createElement('div');
+    d.className='prog-dot';
+    d.id='dot'+i;
+    w.appendChild(d);
+  }
+}
+
+function renderQ(){
+  var q=questions[cur];
+  sel=null; answered=false;
+  document.getElementById('qNum').textContent='QUESTÃO '+(cur+1);
+  document.getElementById('qCat').textContent=q.cat;
+  document.getElementById('qText').textContent=q.q;
+  document.getElementById('progLabel').textContent='QUESTÃO '+(cur+1)+' DE '+questions.length;
+  document.getElementById('progScore').textContent=score;
+  document.getElementById('progFill').style.width=Math.round((cur/questions.length)*100)+'%';
+  for(var i=0;i<questions.length;i++){
+    var d=document.getElementById('dot'+i);
+    if(!d) continue;
+    if(i<cur){
+      d.className='prog-dot '+(results[i]&&results[i].ok?'ok':'no');
+    } else if(i===cur){
+      d.className='prog-dot cur';
+    } else {
+      d.className='prog-dot';
+    }
+  }
+  var wrap=document.getElementById('opts');
+  wrap.innerHTML='';
+  var letters=['A','B','C','D'];
+  for(var i=0;i<4;i++){
+    (function(idx){
+      var div=document.createElement('div');
+      div.className='opt';
+      var letDiv=document.createElement('div');
+      letDiv.className='opt-let';
+      letDiv.textContent=letters[idx];
+      var txtDiv=document.createElement('div');
+      txtDiv.className='opt-txt';
+      txtDiv.textContent=q.opts[idx];
+      div.appendChild(letDiv);
+      div.appendChild(txtDiv);
+      div.addEventListener('click',function(){ pick(idx); });
+      wrap.appendChild(div);
+    })(i);
+  }
+  document.getElementById('feedback').className='fb';
+  document.getElementById('fbIcon').textContent='';
+  document.getElementById('fbTxt').innerHTML='';
+  var bc=document.getElementById('btnCheck');
+  bc.disabled=true;
+  bc.style.display='';
+  document.getElementById('btnNext').className='btn-next';
+}
+
+function pick(idx){
+  if(answered) return;
+  sel=idx;
+  var opts=document.querySelectorAll('.opt');
+  for(var i=0;i<opts.length;i++){
+    opts[i].classList.remove('sel');
+  }
+  opts[idx].classList.add('sel');
+  document.getElementById('btnCheck').disabled=false;
+}
+
+function check(){
+  if(sel===null||answered) return;
+  answered=true;
+  var q=questions[cur];
+  var ok=(sel===q.c);
+  if(ok) score++;
+  results[cur]={q:q.q,sel:sel,correct:q.c,opts:q.opts,ok:ok,cat:q.cat,exp:q.exp};
+  var opts=document.querySelectorAll('.opt');
+  for(var i=0;i<opts.length;i++){
+    opts[i].classList.add('disabled');
+    if(i===q.c){
+      opts[i].classList.add('correct');
+    } else if(i===sel && !ok){
+      opts[i].classList.add('wrong');
+    } else if(i!==sel){
+      opts[i].classList.add('reveal');
+    }
+  }
+  var dot=document.getElementById('dot'+cur);
+  if(dot) dot.className='prog-dot '+(ok?'ok':'no');
+  document.getElementById('fbIcon').textContent=ok?'\u2705':'\u274C';
+  document.getElementById('fbTxt').innerHTML='<strong>'+(ok?'Correto!':'Incorreto.')+'</strong> '+q.exp;
+  document.getElementById('feedback').className='fb show '+(ok?'fb-ok':'fb-no');
+  document.getElementById('btnCheck').style.display='none';
+  document.getElementById('progScore').textContent=score;
+  var bn=document.getElementById('btnNext');
+  bn.className='btn-next show';
+  bn.textContent=(cur<questions.length-1)?'PRÓXIMA \u2192':'VER RESULTADO \u2192';
+}
+
+function next(){
+  cur++;
+  if(cur>=questions.length){
+    showResult();
+  } else {
+    renderQ();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+}
+
+function showResult(){
+  document.getElementById('quizMain').style.display='none';
+  document.getElementById('progressBar').style.display='none';
+  document.getElementById('progFill').style.width='100%';
+  var rs=document.getElementById('resultScreen');
+  rs.style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+  var pct=Math.round((score/questions.length)*100);
+  var passed=(pct>=70);
+  var medal,msg;
+  if(pct>=96){medal='\uD83C\uDFC6';msg='Excelente! Você domina completamente os procedimentos de segurança digital e prevenção a fraudes da Cazan Transportes.';}
+  else if(pct>=80){medal='\uD83C\uDFAF';msg='Muito bem! Você tem sólido entendimento dos protocolos de segurança. Revise os pontos incorretos e continue se aprimorando.';}
+  else if(pct>=70){medal='\uD83D\uDEE1\uFE0F';msg='Aprovado! Bom domínio do conteúdo. Continue praticando para solidificar todo o conhecimento do POP-024.';}
+  else if(pct>=50){medal='\uD83D\uDCDA';msg='Continue estudando! Revise o POP-024 com atenção e tente novamente quando estiver pronto.';}
+  else{medal='\uD83D\uDCAA';msg='Não desanime! Leia o POP-024 com calma, anote os procedimentos principais e refaça o quiz.';}
+  document.getElementById('rMedal').textContent=medal;
+  document.getElementById('rScore').textContent=score+'/'+questions.length;
+  document.getElementById('rPct').innerHTML=pct+'% de aproveitamento — <span class="'+(passed?'result-status-ok':'result-status-no')+'">'+(passed?'\u2705 APROVADO':'\u274C ABAIXO DO MÍNIMO (70%)')+'</span>';
+  document.getElementById('rMsg').textContent=msg;
+  document.getElementById('rsOk').textContent=score;
+  document.getElementById('rsNo').textContent=questions.length-score;
+  document.getElementById('rsPt').textContent=pct+'%';
+  var letters=['A','B','C','D'];
+  var rl=document.getElementById('reviewList');
+  rl.innerHTML='';
+  for(var i=0;i<results.length;i++){
+    var r=results[i];
+    if(!r) continue;
+    var div=document.createElement('div');
+    div.className='rev-item '+(r.ok?'ok':'no');
+    var catDiv=document.createElement('div');
+    catDiv.className='rev-cat';
+    catDiv.textContent=r.cat;
+    var qDiv=document.createElement('div');
+    qDiv.className='rev-q';
+    qDiv.textContent=(i+1)+'. '+r.q;
+    var aDiv=document.createElement('div');
+    aDiv.className='rev-a';
+    var selSpan=document.createElement('span');
+    selSpan.className=r.ok?'rev-ok':'rev-no';
+    selSpan.textContent=(r.ok?'\u2713':'\u2715')+' '+letters[r.sel]+'. '+r.opts[r.sel];
+    aDiv.appendChild(document.createTextNode('Sua resposta: '));
+    aDiv.appendChild(selSpan);
+    if(!r.ok){
+      var corrSpan=document.createElement('span');
+      corrSpan.className='rev-ok';
+      corrSpan.textContent='\u2713 '+letters[r.correct]+'. '+r.opts[r.correct];
+      aDiv.appendChild(document.createElement('br'));
+      aDiv.appendChild(document.createTextNode('Correta: '));
+      aDiv.appendChild(corrSpan);
+    }
+    div.appendChild(catDiv);
+    div.appendChild(qDiv);
+    div.appendChild(aDiv);
+    rl.appendChild(div);
+  }
+}
+
+function restart(){
+  document.getElementById('resultScreen').style.display='none';
+  document.getElementById('progressBar').style.display='none';
+  document.getElementById('startScreen').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
