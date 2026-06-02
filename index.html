@@ -874,6 +874,9 @@ function checkName(){
 }
 
 function startQuiz(){
+  playerName=document.getElementById('nomeInput').value.trim();
+  playerSetor=document.getElementById('setorInput').value.trim()||'Nao informado';
+  if(!playerName){alert('Por favor informe seu nome.');return;}
   questions=shuffle(Q);
   cur=0; sel=null; answered=false; score=0; results=[];
   document.getElementById('startScreen').style.display='none';
@@ -999,20 +1002,21 @@ function saveToSheets(){
   var pct=Math.round((score/questions.length)*100);
   var passed=pct>=70;
   var now=new Date();
-  var payload={
-    nome:playerName,
-    setor:playerSetor,
+  var dataHora=now.toLocaleDateString('pt-BR')+' '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+  var nome=playerName||'Nao informado';
+  var setor=playerSetor||'Nao informado';
+  var payload=JSON.stringify({
+    nome:nome,
+    setor:setor,
     acertos:score,
     porcento:pct,
     situacao:passed?'Aprovado':'Reprovado',
-    dataHora:now.toLocaleDateString('pt-BR')+' '+now.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})
-  };
-  fetch(SHEETS_URL,{
-    method:'POST',
-    mode:'no-cors',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(payload)
-  }).catch(function(){});
+    dataHora:dataHora
+  });
+  var xhr=new XMLHttpRequest();
+  xhr.open('POST',SHEETS_URL,true);
+  xhr.setRequestHeader('Content-Type','text/plain');
+  xhr.send(payload);
   showResult();
 }
 
